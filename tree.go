@@ -111,7 +111,7 @@ func (t *Tree) lookupNode(ctx context.Context, h Hash) ([]byte, *Node, error) {
 		return nil, nil, NodeNotFoundError{H: h}
 	}
 	var node Node
-	err = decodeFromBytes(&node, b)
+	err = DecodeFromBytes(&node, b)
 	if err != nil {
 		return nil, nil, err
 	}
@@ -170,7 +170,7 @@ func (t *Tree) findTyped(ctx context.Context, h Hash, skipVerify bool) (ret inte
 		return nil, nil, err
 	}
 	obj := t.cfg.v.Construct()
-	err = decodeFromBytes(&obj, tmp)
+	err = DecodeFromBytes(&obj, tmp)
 	if err != nil {
 		return nil, nil, err
 	}
